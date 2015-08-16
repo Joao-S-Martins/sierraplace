@@ -91,7 +91,7 @@
         </li>
         
         <li>
-            <a href="gallery.html">Photos &amp; Videos</a>
+            <a href="gallery.html">Photos</a>
         </li>
         
         <li>
