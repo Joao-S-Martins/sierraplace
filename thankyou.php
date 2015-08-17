@@ -128,13 +128,6 @@
 
         
     </div>
-
-    <div class="col-xs-12 test">
-        
-        <p><?=$msg?></p>
-
-        
-    </div>
 </div>
 
 
