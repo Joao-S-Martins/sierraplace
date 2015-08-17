@@ -1,0 +1,17 @@
+{
+  "name": "Sierra Place Apartments",
+  "private": false,
+  "version": "1.0.0",
+  "description": "Sierra Place Apartments",
+  "contributors": {
+    "name": "Joao Martins",
+    "email": "john.martins@sbcglobal.net"
+  },
+  "devDependencies": {
+    "bower": "~1.4"
+  },
+  "engines": {
+    "node": ">=0.10"
+  },
+  "repository": "https://github.com/Joao-S-Martins/sierraplace"
+}
