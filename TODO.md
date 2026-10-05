@@ -3,7 +3,7 @@
 ## Fall 2025
 
 - [x] Remove all pricing from the website
-- [ ] Update or remove outdated pictures, especially the main website image (Requested new images)
+- [x] Update or remove outdated pictures, especially the main website image (Requested new images)
 - [x] Remove or update amenities to reflect:
   - [x] Fitness room is permanently closed (remove from all ads)
   - [x] No huge kitchens
