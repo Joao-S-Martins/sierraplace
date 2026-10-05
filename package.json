@@ -1,17 +1,21 @@
 {
-  "name": "Sierra Place Apartments",
-  "private": false,
+  "name": "sierraplace",
   "version": "1.0.0",
-  "description": "Sierra Place Apartments",
-  "contributors": {
-    "name": "Joao Martins",
-    "email": "john.martins@sbcglobal.net"
+  "description": "Static website for Sierra Place Apartments",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server ."
+  },
+  "dependencies": {
+    "blueimp-gallery": "^2.39.0",
+    "jquery": "^3.7.1",
+    "bootstrap": "^3.4.1",
+    "requirejs": "^2.3.6"
   },
   "devDependencies": {
-    "bower": "~1.4"
+    "live-server": "^1.2.2"
   },
-  "engines": {
-    "node": ">=0.10"
-  },
+  "author": "Joao Martins <john.martins@sbcglobal.net>",
+  "license": "MIT",
   "repository": "https://github.com/Joao-S-Martins/sierraplace"
 }

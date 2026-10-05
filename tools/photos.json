@@ -1,0 +1,21 @@
+{
+  "_comment": "Which original photo each site image is built from. Filenames are relative to the --source directory passed to process_photos.py. See tools/PHOTOS.md.",
+  "shoot": "2026-04-28 property shoot (DSC* camera files and dji_fly_* drone files, hirezphotos set)",
+  "hero": {
+    "output": "index-photos/pool-aerial-view.jpg",
+    "source": "dji_fly_20260428_113430_492_1777409615166_photo.jpg"
+  },
+  "gallery": {
+    "001": { "source": "dji_fly_20260428_113440_493_1777409610861_photo.jpg" },
+    "002": { "source": "DSC03443.jpg" },
+    "003": { "source": "DSC03463.jpg" },
+    "004": { "source": "DSC03168.jpg" },
+    "005": { "source": "DSC03160.jpg" },
+    "006": { "source": "DSC03146.jpg" },
+    "007": { "source": "DSC03173.jpg" },
+    "009": { "source": "DSC03272.jpg", "thumb_center_y": 0.8 },
+    "014": { "source": "DSC03296.jpg" },
+    "015": { "source": "DSC03497.jpg" },
+    "016": { "source": "dji_fly_20260428_113336_490_1777409624081_photo.jpg" }
+  }
+}
