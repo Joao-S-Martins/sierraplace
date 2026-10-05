@@ -17,6 +17,30 @@ npm start        # live-server . (http://localhost:8080)
 
 Serve from the repo root. Pages load scripts with root-absolute paths (`/js/require.js`, `data-main="/js/optimized.js"`), so opening the files with `file://` breaks the JS.
 
+## Shell: PowerShell for Windows tasks, gh for GitHub
+
+This is a Windows machine. The Bash tool is Git Bash, which has no terminal for interactive prompts.
+
+- **Use the PowerShell tool first** for Windows-specific queries: the registry (for example the default browser under `HKCU:\...\UrlAssociations`), installed apps (`Get-AppxPackage`), and anything else using cmdlets or Windows paths.
+- **Don't run bare `git push`, `pull` or `fetch` against GitHub.** In Git Bash they fail with `/dev/tty: No such device or address` because the credential prompt has nowhere to go. Use the `gh` route below instead.
+
+**Pushing and GitHub API calls:** git itself has no credential helper, so plain `git push` fails in both shells (in PowerShell with `terminal prompts disabled`). The GitHub CLI is installed and signed in (`gh auth status`), but the folder winget installed it to may be missing from the tool's PATH. Call it by its full path:
+
+```
+C:\Users\johnm\AppData\Local\Microsoft\WinGet\Packages\GitHub.cli_Microsoft.Winget.Source_8wekyb3d8bbwe\bin\gh.exe
+```
+
+To push without changing git config, pass `gh` as a one-off credential helper. This works from Bash:
+
+```bash
+GH=/c/Users/johnm/AppData/Local/Microsoft/WinGet/Packages/GitHub.cli_Microsoft.Winget.Source_8wekyb3d8bbwe/bin/gh.exe
+git -c credential.helper= -c "credential.helper=!$GH auth git-credential" push origin main
+```
+
+If `gh` isn't signed in, ask the user to run the command in their own terminal; don't try other ways to authenticate.
+
+Bash is fine for local git (log, diff, commit, merge), Python scripts (`python` is on PATH, with Pillow installed) and file work.
+
 ## Architecture notes
 
 - **No shared layout.** The header, the contact block, the "Homes for Rent" sidebar and the office hours are copied into each `*.html` page. A content change (hours, amenities, pet policy) has to be made in every page that has that block. Grep across `*.html` and `thankyou.php` to find every copy.
@@ -31,6 +55,7 @@ Serve from the repo root. Pages load scripts with root-absolute paths (`/js/requ
 
 ## Branches and work in progress
 
-- `master` is the published site. `fall_2025` holds the Fall 2025 content update. [TODO.md](TODO.md) tracks the property owner's requested changes; only the photo refresh is still open.
-- `react/` and the local `react` branch are an unfinished React migration (WIP, not on `master`). Don't mix that work into content changes.
+- `main` is the published site (renamed from `master` in October 2026). The Fall 2025 content update (`fall_2025`) was merged into it in October 2026. [TODO.md](TODO.md) tracks the property owner's requested changes.
+- Deployment is a manual FTP upload from a `main` checkout. Upload only the changed pages and asset folders. Never upload `forms/` (it contains a rental application the owner asked to take down), `new-photos/`, `tools/`, `react/`, `node_modules/` or the repo's docs and config files.
+- `react/` and the local `react` branch are an unfinished React migration (WIP, not on `main`). Don't mix that work into content changes.
 - Business facts are set by the owner's requests in TODO.md. For example: no pricing, no fitness room, small to medium pets only, no move-in specials, no instant application processing, and office hours of 9am–4pm Monday–Friday. Copy shouldn't contradict them.
