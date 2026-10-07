@@ -1,22 +1,94 @@
 <?php
+    // Emails a submission from one of the site's forms (request-information, schedule-tour,
+    // rental-forms, contact-us, work-order) to the management office, then shows the page below.
+    // Written for PHP 5.4 and later, since the host's PHP version isn't pinned.
     $recipient = 'management@sierraplaceapartments.com';
-    $type = stripslashes($_POST['type']);
-    $firstName = stripslashes($_POST['firstName']);
-    $lastName = stripslashes($_POST['lastName']);
-    $name = "$firstName $lastName";
-    $email = stripcslashes($_POST['email']);
-    $phone = stripcslashes($_POST['phone']);
-    $bedrooms = stripcslashes($_POST['bedrooms']);
-    $pets = stripcslashes($_POST['pets']);
-    $moveInDate = stripcslashes($_POST['moveInDate']);
-    $tourDate = stripcslashes($_POST['tourDate']);
-    $tourTime = stripcslashes($_POST['tourTime']);
-    $source = stripcslashes($_POST['source']);
-    $comments = stripcslashes($_POST['comments']);
-    $subject = "Sierra Place Apartments: $type, $name";
-    $msg = "Message from: $name\nEmail: $email\nPhone: $phone\nRequest type: $type\nBedrooms: $bedrooms\nPets: $pets\nTour Date and time: $tourDate $tourTime\nMove-in Date: $moveInDate\nSource: $source\nComments:\n$comments";
-    $headers = "From: $recipient\r\n";
-    mail($recipient, $subject, $msg);
+
+    // A single-line form value: line breaks removed (in the subject or headers they would let a
+    // visitor add mail headers), trimmed and length-limited. Missing fields become ''.
+    function form_line($key, $max = 200) {
+        $value = isset($_POST[$key]) && is_string($_POST[$key]) ? $_POST[$key] : '';
+        $value = trim(preg_replace('/[\x00-\x1F\x7F]+/', ' ', $value));
+        return function_exists('mb_substr') ? mb_substr($value, 0, $max, 'UTF-8') : substr($value, 0, $max);
+    }
+
+    // A multi-line form value (comments): line breaks normalized to \n, other control
+    // characters removed, length-limited.
+    function form_text($key, $max = 5000) {
+        $value = isset($_POST[$key]) && is_string($_POST[$key]) ? $_POST[$key] : '';
+        $value = str_replace(array("\r\n", "\r"), "\n", $value);
+        $value = trim(preg_replace('/[\x00-\x08\x0B-\x1F\x7F]+/', ' ', $value));
+        return function_exists('mb_substr') ? mb_substr($value, 0, $max, 'UTF-8') : substr($value, 0, $max);
+    }
+
+    $types = array(
+        'request-information' => 'Information request',
+        'schedule-tour' => 'Tour request',
+        'rent-now' => 'Rental inquiry',
+        'contact-us' => 'Contact form',
+        'work-order' => 'Work order',
+    );
+    $type = form_line('type', 50);
+    $typeLabel = isset($types[$type]) ? $types[$type] : 'Website form';
+
+    $name = trim(form_line('firstName', 100) . ' ' . form_line('lastName', 100));
+    $email = form_line('email', 254);
+    $phone = form_line('phone', 50);
+    $comments = form_text('comments');
+    $pets = form_line('pets', 10);
+    $pets = $pets === 'true' ? 'Yes' : ($pets === 'false' ? 'No' : $pets);
+
+    // Only real submissions send mail: a POST with the hidden "priority" field left empty
+    // (it's hidden with CSS, so only bots fill it in) and some way to identify the sender.
+    // Plain visits to this page (links, crawlers) and empty forms send nothing.
+    $isSubmission = isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST'
+        && form_line('priority') === ''
+        && ($name !== '' || $email !== '' || $phone !== '' || $comments !== '');
+
+    if ($isSubmission) {
+        $fields = array(
+            'Request type' => $typeLabel,
+            'Name' => $name,
+            'Email' => $email,
+            'Phone' => $phone,
+            'Apartment number' => form_line('unit', 20),
+            'Maintenance category' => form_line('category', 100),
+            // Unchecked checkboxes aren't posted, so say "No" explicitly on work orders.
+            'Permission to enter' => $type === 'work-order' ? (isset($_POST['permissionToEnter']) ? 'Yes' : 'No') : '',
+            'Bedrooms' => form_line('bedrooms', 10),
+            'Pets' => $pets,
+            'Tour date and time' => trim(form_line('tourDate', 20) . ' ' . form_line('tourTime', 20)),
+            'Move-in date' => form_line('moveInDate', 20),
+            'Heard about us from' => form_line('source', 100),
+        );
+        $msg = '';
+        foreach ($fields as $label => $value) {
+            if ($value !== '') {
+                $msg .= "$label: $value\n";
+            }
+        }
+        $msg .= "\nComments:\n" . ($comments !== '' ? $comments : '(none)') . "\n";
+
+        // Non-ASCII names (é, ñ) need MIME encoding in the subject. One encoded word, with no
+        // line folding, so mail() never receives a subject containing a line break.
+        $subject = 'Sierra Place Apartments: ' . $typeLabel . ($name !== '' ? ", $name" : '');
+        if (preg_match('/[^\x20-\x7E]/', $subject)) {
+            $subject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
+        }
+
+        $headers = array(
+            "From: Sierra Place Website <$recipient>",
+            'MIME-Version: 1.0',
+            'Content-Type: text/plain; charset=UTF-8',
+        );
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $headers[] = "Reply-To: $email";
+        }
+
+        if (!mail($recipient, $subject, $msg, implode("\r\n", $headers))) {
+            error_log("thankyou.php: mail() failed for a $typeLabel submission");
+        }
+    }
 ?>
 
 <!DOCTYPE html>
