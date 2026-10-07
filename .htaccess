@@ -1,0 +1,41 @@
+# Sierra Place Apartments: Apache settings for the site root.
+# Before uploading, download any existing .htaccess from the server and merge
+# its contents into this file, so host-provided settings aren't lost.
+# See SEO.md ("Deploying the seo branch") for how to test after uploading.
+
+AddDefaultCharset UTF-8
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# One host name: send www.sierraplaceapartments.com to sierraplaceapartments.com.
+RewriteCond %{HTTP_HOST} ^www\.sierraplaceapartments\.com$ [NC]
+RewriteRule ^(.*)$ https://sierraplaceapartments.com/$1 [R=301,L]
+
+# One home page URL: send /index.html to /.
+RewriteCond %{THE_REQUEST} \s/index\.html[\s?] [NC]
+RewriteRule ^index\.html$ https://sierraplaceapartments.com/ [R=301,L]
+
+# Send http:// to https://. Off until tested: some hosts terminate HTTPS in a
+# proxy, and then this rule loops ("too many redirects"). To turn it on, remove
+# the # from the three lines below, upload, and follow the test in SEO.md.
+# RewriteCond %{HTTPS} !=on
+# RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+# RewriteRule ^(.*)$ https://sierraplaceapartments.com/$1 [R=301,L]
+</IfModule>
+
+# Let browsers cache images, CSS, JS and fonts. CSS and JS links carry a
+# ?v= version, so bump it in every page when those files change.
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpeg "access plus 7 days"
+ExpiresByType image/png "access plus 7 days"
+ExpiresByType image/gif "access plus 7 days"
+ExpiresByType image/x-icon "access plus 30 days"
+ExpiresByType text/css "access plus 30 days"
+ExpiresByType application/javascript "access plus 30 days"
+ExpiresByType text/javascript "access plus 30 days"
+ExpiresByType font/woff2 "access plus 1 year"
+ExpiresByType application/pdf "access plus 1 day"
+</IfModule>

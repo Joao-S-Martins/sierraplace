@@ -4,10 +4,10 @@ This repository contains the static website for Sierra Place Apartments, located
 
 ## Features
 
-- Floor plans and pricing information
+- Floor plans
 - Photo gallery
 - Amenities overview
-- Online rental forms and application download
+- Rental inquiry form
 - Contact and request information forms
 - Schedule a tour functionality
 - Online rent payment instructions
@@ -43,7 +43,12 @@ This repository contains the static website for Sierra Place Apartments, located
 - `pay-online.html` — Rent payment info
 - `request-information.html` — Information request form
 - `schedule-tour.html` — Tour scheduling form
-- `the-area.html` — Area information
+- `the-area.html` — Area information and commute times
+- `apartments-near-sierra-view-medical-center.html` — Landing page for hospital and healthcare workers
+- `moving-to-porterville.html` — Relocation guide
+- `faq.html` — Frequently asked questions
+- `404.html` — Not-found page
+- `robots.txt`, `sitemap.xml`, `llms.txt`, `.htaccess` — Search engine, AI assistant and server settings (see [SEO.md](SEO.md))
 - `css/`, `js/`, `img/`, `gallery-photos/`, `index-photos/`, `floorplans/` — Static assets
 
 ## Deployment

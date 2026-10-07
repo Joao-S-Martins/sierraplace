@@ -1,31 +1,11 @@
-<?php
-    $recipient = 'management@sierraplaceapartments.com';
-    $type = stripslashes($_POST['type']);
-    $firstName = stripslashes($_POST['firstName']);
-    $lastName = stripslashes($_POST['lastName']);
-    $name = "$firstName $lastName";
-    $email = stripcslashes($_POST['email']);
-    $phone = stripcslashes($_POST['phone']);
-    $bedrooms = stripcslashes($_POST['bedrooms']);
-    $pets = stripcslashes($_POST['pets']);
-    $moveInDate = stripcslashes($_POST['moveInDate']);
-    $tourDate = stripcslashes($_POST['tourDate']);
-    $tourTime = stripcslashes($_POST['tourTime']);
-    $source = stripcslashes($_POST['source']);
-    $comments = stripcslashes($_POST['comments']);
-    $subject = "Sierra Place Apartments: $type, $name";
-    $msg = "Message from: $name\nEmail: $email\nPhone: $phone\nRequest type: $type\nBedrooms: $bedrooms\nPets: $pets\nTour Date and time: $tourDate $tourTime\nMove-in Date: $moveInDate\nSource: $source\nComments:\n$comments";
-    $headers = "From: $recipient\r\n";
-    mail($recipient, $subject, $msg);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Thank You | Sierra Place Apartments</title>
+    <title>Page Not Found | Sierra Place Apartments</title>
     <meta name="robots" content="noindex">
+    <base href="/">
     <meta name="format-detection" content="telephone=no">
     <link rel="icon" href="/favicon.ico">
     <link rel="preload" as="image" href="/index-photos/pool-aerial-view.jpg" fetchpriority="high">
@@ -105,16 +85,18 @@
 </div>
 
 <div class="container property-container">
-    
-        <h1>Thank You</h1>
-        <h2><strong><em>Apartments for Rent in Porterville, CA</em></strong></h2>
-        
-
-    <div class="col-xs-12 lead">
-        
-        <p>Our management will be contacting you by phone or email as soon as possible. Thanks again for your interest in Sierra Place!</p>
-
-        
+    <h1>Page Not Found</h1>
+    <div class="col-md-12 lead">
+        <p>Sorry, we couldn't find that page. It may have moved. Try one of these:</p>
+        <ul>
+            <li><a href="/">Sierra Place Apartments home</a></li>
+            <li><a href="floorplans-pricing.html">Floor plans</a></li>
+            <li><a href="gallery.html">Photos</a></li>
+            <li><a href="amenities.html">Amenities</a></li>
+            <li><a href="schedule-tour.html">Schedule a tour</a></li>
+            <li><a href="contact-us.html">Contact us</a></li>
+        </ul>
+        <p>Or call us at <a href="tel:+15597818000">(559) 781-8000</a>, Monday to Friday from 9 AM to 4 PM.</p>
     </div>
 </div>
 <footer class="site-footer">

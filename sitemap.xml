@@ -1,39 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://www.sierraplace.com/</loc>
+    <loc>https://sierraplaceapartments.com/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <image:image><image:loc>https://sierraplaceapartments.com/index-photos/pool-aerial-view.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://www.sierraplace.com/amenities.html</loc>
+    <loc>https://sierraplaceapartments.com/apartments-near-sierra-view-medical-center.html</loc>
+    <lastmod>2026-10-04</lastmod>
   </url>
   <url>
-    <loc>https://www.sierraplace.com/contact-us.html</loc>
+    <loc>https://sierraplaceapartments.com/floorplans-pricing.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <image:image><image:loc>https://sierraplaceapartments.com/floorplans/119_floorplan_0.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/floorplans/119_floorplan_1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/floorplans/119_floorplan_2.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/floorplans/119_floorplan_3.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://www.sierraplace.com/floorplans-pricing.html</loc>
+    <loc>https://sierraplaceapartments.com/gallery.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <image:image><image:loc>https://sierraplaceapartments.com/gallery-photos/image_gallery_000.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/gallery-photos/image_gallery_001.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/gallery-photos/image_gallery_002.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/gallery-photos/image_gallery_003.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/gallery-photos/image_gallery_004.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/gallery-photos/image_gallery_005.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/gallery-photos/image_gallery_006.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/gallery-photos/image_gallery_007.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/gallery-photos/image_gallery_008.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/gallery-photos/image_gallery_009.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/gallery-photos/image_gallery_010.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/gallery-photos/image_gallery_011.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/gallery-photos/image_gallery_012.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/gallery-photos/image_gallery_013.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/gallery-photos/image_gallery_014.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/gallery-photos/image_gallery_015.jpg</image:loc></image:image>
+    <image:image><image:loc>https://sierraplaceapartments.com/gallery-photos/image_gallery_016.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://www.sierraplace.com/gallery.html</loc>
+    <loc>https://sierraplaceapartments.com/amenities.html</loc>
+    <lastmod>2026-10-04</lastmod>
   </url>
   <url>
-    <loc>https://www.sierraplace.com/pay-online.html</loc>
+    <loc>https://sierraplaceapartments.com/the-area.html</loc>
+    <lastmod>2026-10-04</lastmod>
   </url>
   <url>
-    <loc>https://www.sierraplace.com/rental-forms.html</loc>
+    <loc>https://sierraplaceapartments.com/moving-to-porterville.html</loc>
+    <lastmod>2026-10-04</lastmod>
   </url>
   <url>
-    <loc>https://www.sierraplace.com/request-information.html</loc>
+    <loc>https://sierraplaceapartments.com/faq.html</loc>
+    <lastmod>2026-10-04</lastmod>
   </url>
   <url>
-    <loc>https://www.sierraplace.com/schedule-tour.html</loc>
+    <loc>https://sierraplaceapartments.com/schedule-tour.html</loc>
+    <lastmod>2026-10-04</lastmod>
   </url>
   <url>
-    <loc>https://www.sierraplace.com/thankyou.php</loc>
+    <loc>https://sierraplaceapartments.com/request-information.html</loc>
+    <lastmod>2026-10-04</lastmod>
   </url>
   <url>
-    <loc>https://www.sierraplace.com/the-area.html</loc>
+    <loc>https://sierraplaceapartments.com/rental-forms.html</loc>
+    <lastmod>2026-10-04</lastmod>
   </url>
   <url>
-    <loc>https://www.sierraplace.com/work-order.html</loc>
+    <loc>https://sierraplaceapartments.com/contact-us.html</loc>
+    <lastmod>2026-10-04</lastmod>
+  </url>
+  <url>
+    <loc>https://sierraplaceapartments.com/pay-online.html</loc>
+    <lastmod>2026-10-04</lastmod>
+  </url>
+  <url>
+    <loc>https://sierraplaceapartments.com/work-order.html</loc>
+    <lastmod>2026-10-04</lastmod>
   </url>
 </urlset>
